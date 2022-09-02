@@ -1,10 +1,12 @@
-
+#definindo função
 def Insertionsort(meuVetor, tamVetor):
 
+    #para i entre 1 e len(meuVetor):
     for i in range(1, len(meuVetor)):
         aux = meuVetor[i]
         j = i-1
 
+        #enquanto i >= 0 and aux < meuVetor[j-1]
         while j >= 0 and aux < meuVetor[j]:
             meuVetor[j + 1] = meuVetor[j]
             j = j - 1
