@@ -43,12 +43,12 @@ def PrintVetor(meuVetor):
         print(meuVetor[i], end = " ")
     print()
 
+
 #Main
-if __name__ == '__main__':
-    meuVetor = [-82, 23, -31, 44, -38, -94, 32, -71, -93, 38, -9, -95, -60, 17, -1]
-    tamVetor = len(meuVetor)
+meuVetor = [-82, 23, -31, 44, -38, -94, 32, -71, -93, 38, -9, -95, -60, 17, -1]
+tamVetor = len(meuVetor)
 
-    MergeSort(meuVetor)
+MergeSort(meuVetor)
 
-    print("Vetor ordenado: ")
-    PrintVetor(meuVetor)
+print("Vetor ordenado: ")
+PrintVetor(meuVetor)
