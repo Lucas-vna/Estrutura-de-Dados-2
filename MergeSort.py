@@ -20,8 +20,8 @@ def MergeSort(meuVetor):
 
         #Até chegarmos no final da P1 ou P2, pega a maior parte dos elementos de P1 e P2 
         # e os coloca na posicao correta no vetor aux
-        while i < len(P1) and j < len(P2): #oq faz: enquanto os numeros no ponteiro i forem menores que o tamanho da P1 e enquanto os numeros no ponteiro j forem menores que o tamanho da P2 
-            if P1[i] < P2[j]:              #se o numero que estiver na posicao i de P1 for maior que o número que estiver na posicao j de P2
+        while i < len(P1) and j < len(P2): #oq faz: enquanto a qntd de numeros no ponteiro i forem menores que o tamanho da P1 e enquanto a qntd de numeros no ponteiro j forem menores que o tamanho da P2 
+            if P1[i] < P2[j]:              #se o numero que estiver na posicao i de P1 for maior que o número que estiver na posicao j de P2:
                 meuVetor[k] = P1[i]        #copia esse numero da P1 para a posicao k do vetor aux
                 i += 1                     #aumenta a posicao que vai ser comparada do poteiro i (avanca uma casa no vetor ex: sai da posicao 0 para 1)
             else:
