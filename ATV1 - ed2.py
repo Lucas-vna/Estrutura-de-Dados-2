@@ -1,4 +1,3 @@
-
 #ATV1 - ed2
 
 #FUNÇÕES NORMAIS--------------------------------------------------------------------------------------------------------------------------
@@ -67,7 +66,7 @@ def bubbleSort(vetor, tamVetor):
     print(trocas)
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
-#MERGE SORT
+#MERGE SORT #contador de trocas não feito
 
 #funcao principal
 def mergeSort(vetor):
@@ -114,7 +113,7 @@ def mergeSort(vetor):
             k += 1
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
-#QUICK SORT
+#QUICK SORT contador de troca nao feito
 def Particiona(vetor, Inicio, Fim): 
     trocas = 0
 
@@ -160,7 +159,7 @@ def quickSort(vetor, Inicio, Fim):
         quickSort(vetor, pivo+1, Fim)
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
-#HEAP SORT
+#HEAP SORT contador de troca nao feito
 def heapify(vetor, tamVetor, i):
     trocas = 0
       
@@ -248,9 +247,9 @@ def selectionSortREV(meuVetor, tamanhoVetor):
     print(trocas)
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
-#MERGE SORT REVERSE
+#MERGE SORT REVERSE ----- #contador de trocas não feito
 #funcao principal
-def mergeSort(vetor):
+def mergeSortREV(vetor):
 
     if len(vetor) > 1:
         
@@ -294,12 +293,89 @@ def mergeSort(vetor):
             k += 1
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
-#QUICK SORT REVERSE
-def quickSortREV()
+#QUICK SORT REVERSE ----- contador de troca nao feito
+def Particiona(vetor, Inicio, Fim): 
+    trocas = 0
+
+    #escolher o número mais a direita como pivo
+    pivo = vetor[Fim]
+
+    #ponteiro para maioor elemento 
+    i = Inicio-1
+
+    #Passar por todos os elementos
+    #comparar cada elemento com o pivo
+    for j in range (Inicio, Fim):
+        if vetor[j] >= pivo:
+            #se um elemento menor que o pivo for encontrado
+            #trocar com o maior elemento apontado popor i
+            i = i + 1
+
+            #trocando o elemento em i com o elemento em j
+            (vetor[i], vetor[j]) = (vetor[j], vetor[i])
+            trocas += 1
+
+    #Trocar o pipvo com o maior elemento especificado por i
+    (vetor[i+1], vetor[Fim]) = (vetor[Fim], vetor[i+1])
+    trocas += 1
+
+    #Retornar a posiçao em que a partiçao foi feita
+    return i+1
+
+    print(trocas)
+
+#Função Principal
+def quickSortREV(vetor, Inicio, Fim):
+    if (Inicio < Fim):
+
+        #Achar o pivo, fazendo com que os elementos menores que o pivo fiquem
+        #ao lado esquerdo, e os maiores ao lado direito do pivo
+        pivo = Particiona(vetor, Inicio, Fim)
+
+        #Chamada recursiva para a esquerda do pivo
+        quickSort(vetor, Inicio, pivo-1)
+
+        #Chamada recursiva para a direita do pivo
+        quickSort(vetor, pivo+1, Fim)
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
-#HEAP SORT REVERSE
-def heapSortREV()
+#HEAP SORT REVERSE ------ contador de troca nao feito
+def heapify(vetor, tamVetor, i):
+    trocas = 0
+      
+      #Acha o maior entre as raizes e filhos
+    menor = i
+    L = 2 * i + 1
+    R = 2 * i + 2
+  
+    if L < tamVetor and vetor[L] < vetor[menor]:
+        menor = L
+  
+    if R < tamVetor and vetor[R] < vetor[menor]:
+        menor = R
+  
+    #Se a raiz não for maior, troca com o maior e continua a função
+    if menor != i:
+        vetor[i], vetor[menor] = vetor[menor], vetor[i]
+        trocas += 1
+        heapify(vetor, tamVetor, menor)
+    
+    print(trocas)
+  
+  
+def heapSortREV(vetor, tamVetor):
+    tamVetor = len(vetor)
+  
+    #Constroi a heap maxima
+    for i in range(int(tamVetor/2) - 1, -1, -1):
+        heapify(vetor, tamVetor, i)
+  
+    for i in range(tamVetor-1, -1, -1):
+        #Troca
+        vetor[0], vetor[i] = vetor[i], vetor[0]
+  
+          #Heapify o elemento da raiz
+        heapify(vetor, i, 0)
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
 #BUBBLE SORT REVERSE
