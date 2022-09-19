@@ -2,11 +2,11 @@
 from getopt import getopt
 import random
 import sys
-import getopt
 
 trocas = 0
  
 #FUNÇÕES NORMAIS--------------------------------------------------------------------------------------------------------------------------
+
 
 #INSERTION SORT
 def insertionSort(vetor, tamVetor):
@@ -33,7 +33,10 @@ def insertionSort(vetor, tamVetor):
     saida.write(", ")
     saida.write(trocasStr)
     saida.write("\n")
+
+
 #-----------------------------------------------------------------------------------------------------------------------------------------
+
 
 #SELECTION SORT   
 def selectionSort(vetor, tamVetor):
@@ -62,7 +65,10 @@ def selectionSort(vetor, tamVetor):
     saida.write(", ")
     saida.write(trocasStr)
     saida.write("\n")
+
+
 #-----------------------------------------------------------------------------------------------------------------------------------------
+
 
 #BUBBLE SORT
 def bubbleSort(vetor, tamVetor):
@@ -91,11 +97,12 @@ def bubbleSort(vetor, tamVetor):
     saida.write(", ")
     saida.write(trocasStr)
     saida.write("\n")
+
+
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
-#MERGE SORT
 
-#funcao principal
+#MERGE SORT
 def mergeSort(vetor):
     global trocas
 
@@ -153,7 +160,10 @@ def imprimeVetorMerge():
     saida.write(", ")
     saida.write(trocasStr)
     saida.write("\n")
+
+
 #-----------------------------------------------------------------------------------------------------------------------------------------
+
 
 #QUICK SORT 
 def Particiona(vetor, Inicio, Fim): 
@@ -198,7 +208,7 @@ def quickSort(vetor, Inicio, Fim):
         #Chamada recursiva para a direita do pivo
         quickSort(vetor, pivo+1, Fim)
 
-def imprimeVetorQS():
+def imprimeVetorQuick():
     tamVetor = len(vetor)
 
     quickSort(vetor, 0, tamVetor-1)
@@ -212,22 +222,24 @@ def imprimeVetorQS():
     saida.write(trocasStr)
     saida.write("\n")
 
+
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
-#HEAP SORT !!!!!ARRUMAR FUNCAO
+
+#HEAP SORT
 def heapify(vetor, tamVetor, i):
     global trocas
       
-      #Acha o maior entre as raizes e filhos
+    #Acha o maior entre as raizes e filhos
     maior = i
-    L = 2 * i + 1
-    R = 2 * i + 2
+    l = 2 * i + 1
+    r = 2 * i + 2
   
-    if L < tamVetor and vetor[i] < vetor[L]:
-        maior = L
+    if l < tamVetor and vetor[i] < vetor[l]:
+        maior = l
   
-    if R < tamVetor and vetor[maior] < vetor[R]:
-        maior = R
+    if r < tamVetor and vetor[maior] < vetor[r]:
+        maior = r
   
     #Se a raiz não for maior, troca com o maior e continua a função
     if maior != i:
@@ -247,7 +259,8 @@ def heapSort(vetor):
         #Troca
         vetor[i], vetor[0] = vetor[0], vetor[i]
         trocas += 1
-          #Heapify o elemento da raiz
+
+        #Heapify o elemento da raiz
         heapify(vetor, i, 0)
 
     vetorStr = str(vetor)
@@ -259,13 +272,15 @@ def heapSort(vetor):
     saida.write(trocasStr)
     saida.write("\n")
 
+
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
 
 
+## FUNÇÕES REVERSE (ORDEM DECRESCENTE) ##
 
+#--------------------------------------------------------------------------------------------------------------------------
 
-#FUNÇÕES REVERSE--------------------------------------------------------------------------------------------------------------------------
 
 #INSERTION SORT REVERSE
 def insertionSortREV(meuVetor, tamVetor):
@@ -291,6 +306,8 @@ def insertionSortREV(meuVetor, tamVetor):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
+    saida.write("\n")
+
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -321,173 +338,11 @@ def selectionSortREV(meuVetor, tamanhoVetor):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
+    saida.write("\n")
+
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
-#MERGE SORT REVERSE ----- #contador de trocas não feito
-#funcao principal
-def mergeSortREV(vetor):
-    global trocas
-
-    if len(vetor) > 1:
-        
-        #Meio é o ponto onde o vetor vai ser dividido em 2 sub vetores
-        Meio = len(vetor)//2
-        P1 = vetor[:Meio] 
-        P2 = vetor[Meio:]
-
-        #definindo as duas partes
-        mergeSort(P1)
-        mergeSort(P2)
-
-        #ponteiros
-        #i contém o numero de P1, comeca em 1
-        #j contém o numero de P2, comeca em 1
-        #k contém o numero de funcao aux, comeca em p
-        i = j = k = 0
-
-        #Até chegarmos no final da P1 ou P2, pega a maior parte dos elementos de P1 e P2 
-        # e os coloca na posicao correta no vetor aux
-        while i < len(P1) and j < len(P2): #oq faz: enquanto a qntd de numeros no ponteiro i forem menores que o tamanho da P1 e enquanto a qntd de numeros no ponteiro j forem menores que o tamanho da P2 
-            if P1[i] > P2[j]:              #se o numero que estiver na posicao i de P1 for maior que o número que estiver na posicao j de P2:
-                vetor[k] = P1[i]        #copia esse numero da P1 para a posicao k do vetor aux
-                i += 1    
-                trocas += 1                 #aumenta a posicao que vai ser comparada do poteiro i (avanca uma casa no vetor ex: sai da posicao 0 para 1)
-            else:
-                vetor[k] = P2[j]        #copia esse numero da P2 para a posicao k do vetor aux
-                j += 1    
-                trocas += 1                 #aumenta a posicao que vai ser comparada do poteiro j (avanca uma casa no vetor ex: sai da posicao 0 para 1)
-            k += 1                         #aumenta a posicao do vetor, fazendo com que o proximo numero seja alocado na posicao seguinte 
-                                        
-        
-        #Quando acabar os elementos de P1 ou P2, pega os remanescentes e os
-        # coloca no vetor aux
-        while i < len(P1):
-            vetor[k] = P1[i]
-            i += 1
-            k += 1
-
-        while j < len(P2):
-            vetor[k] = P2[j]
-            j += 1
-            k += 1
-
-def imprimeVetorMergeREV():
-    mergeSort(vetor)
-
-    vetorStr = str(vetor)
-    trocasStr = str(trocas)
-
-    saida.write("Merge Sort: ")
-    saida.write(vetorStr)
-    saida.write(", ")
-    saida.write(trocasStr)
-
-#-----------------------------------------------------------------------------------------------------------------------------------------
-
-#QUICK SORT REVERSE 
-def Particiona(vetor, Inicio, Fim): 
-    global trocas
-
-    #escolher o número mais a direita como pivo
-    pivo = vetor[Fim]
-
-    #ponteiro para maioor elemento 
-    i = Inicio-1
-
-    #Passar por todos os elementos
-    #comparar cada elemento com o pivo
-    for j in range (Inicio, Fim):
-        if vetor[j] >= pivo:
-            #se um elemento menor que o pivo for encontrado
-            #trocar com o maior elemento apontado popor i
-            i = i + 1
-
-            #trocando o elemento em i com o elemento em j
-            (vetor[i], vetor[j]) = (vetor[j], vetor[i])
-            trocas += 1
-
-    #Trocar o pivo com o maior elemento especificado por i
-    (vetor[i+1], vetor[Fim]) = (vetor[Fim], vetor[i+1])
-    trocas += 1
-
-    #Retornar a posiçao em que a partiçao foi feita
-    return i+1
-
-#Função Principal
-def quickSortREV(vetor, Inicio, Fim):
-    if (Inicio < Fim):
-
-        #Achar o pivo, fazendo com que os elementos menores que o pivo fiquem
-        #ao lado esquerdo, e os maiores ao lado direito do pivo
-        pivo = Particiona(vetor, Inicio, Fim)
-
-        #Chamada recursiva para a esquerda do pivo
-        quickSort(vetor, Inicio, pivo-1)
-
-        #Chamada recursiva para a direita do pivo
-        quickSort(vetor, pivo+1, Fim)
-
-def imprimeVetorQuickREV():
-    quickSort(vetor, 0, tamVetor-1)
-
-    vetorStr = str(vetor)
-    trocasStr = str(trocas)
-
-    saida.write("Quick Sort: ")
-    saida.write(vetorStr)
-    saida.write(", ")
-    saida.write(trocasStr)
-
-#-----------------------------------------------------------------------------------------------------------------------------------------
-
-#HEAP SORT REVERSE ------ contador de troca nao feito
-def heapify(vetor, tamVetor, i):
-    global trocas
-      
-      #Acha o maior entre as raizes e filhos
-    menor = i
-    L = 2 * i + 1
-    R = 2 * i + 2
-  
-    if R < tamVetor and vetor[L] < vetor[menor]:
-        menor = L
-  
-    if R < tamVetor and vetor[R] < vetor[menor]:
-        menor = R
-  
-    #Se a raiz não for maior, troca com o maior e continua a função
-    if menor != i:
-        vetor[i], vetor[menor] = vetor[menor], vetor[i]
-        trocas += 1
-        heapify(vetor, tamVetor, menor)
-  
-  
-def heapSortREV(vetor, tamVetor):
-    global trocas
-    tamVetor = len(vetor)
-  
-    #Constroi a heap maxima
-    for i in range(int(tamVetor/2) - 1, -1, -1):
-        heapify(vetor, tamVetor, i)
-  
-    for i in range(tamVetor-1, -1, -1):
-        #Troca
-        vetor[0], vetor[i] = vetor[i], vetor[0]
-        trocas += 1
-  
-          #Heapify o elemento da raiz
-        heapify(vetor, i, 0)
-
-    vetorStr = str(vetor)
-    trocasStr = str(trocas)
-
-    saida.write("Heap Sort: ")
-    saida.write(vetorStr)
-    saida.write(", ")
-    saida.write(trocasStr)
-
-#-----------------------------------------------------------------------------------------------------------------------------------------
 
 #BUBBLE SORT REVERSE
 def bubbleSortREV(meuVetor, N):
@@ -515,6 +370,179 @@ def bubbleSortREV(meuVetor, N):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
+    saida.write("\n")
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+#MERGE SORT REVERSE
+def mergeSortREV(vetor):
+    global trocas
+
+    if len(vetor) > 1:
+        
+        #Meio é o ponto onde o vetor vai ser dividido em 2 sub vetores
+        Meio = len(vetor)//2
+        P1 = vetor[:Meio] 
+        P2 = vetor[Meio:]
+
+        #definindo as duas partes
+        mergeSortREV(P1)
+        mergeSortREV(P2)
+
+        #ponteiros
+        #i contém o numero de P1, comeca em 1
+        #j contém o numero de P2, comeca em 1
+        #k contém o numero de funcao aux, comeca em p
+        i = j = k = 0
+
+        #Até chegarmos no final da P1 ou P2, pega a maior parte dos elementos de P1 e P2 
+        # e os coloca na posicao correta no vetor aux
+        while i < len(P1) and j < len(P2): #oq faz: enquanto a qntd de numeros no ponteiro i forem menores que o tamanho da P1 e enquanto a qntd de numeros no ponteiro j forem menores que o tamanho da P2 
+            if P1[i] >= P2[j]:              #se o numero que estiver na posicao i de P1 for maior que o número que estiver na posicao j de P2:
+                vetor[k] = P1[i]        #copia esse numero da P1 para a posicao k do vetor aux
+                i += 1    
+                trocas += 1                 #aumenta a posicao que vai ser comparada do poteiro i (avanca uma casa no vetor ex: sai da posicao 0 para 1)
+            else:
+                vetor[k] = P2[j]        #copia esse numero da P2 para a posicao k do vetor aux
+                j += 1    
+                trocas += 1                 #aumenta a posicao que vai ser comparada do poteiro j (avanca uma casa no vetor ex: sai da posicao 0 para 1)
+            k += 1                         #aumenta a posicao do vetor, fazendo com que o proximo numero seja alocado na posicao seguinte 
+                                        
+        
+        #Quando acabar os elementos de P1 ou P2, pega os remanescentes e os
+        # coloca no vetor aux
+        while i < len(P1):
+            vetor[k] = P1[i]
+            i += 1
+            k += 1
+
+        while j < len(P2):
+            vetor[k] = P2[j]
+            j += 1
+            k += 1
+
+def imprimeVetorMergeREV():
+    mergeSortREV(vetor)
+
+    vetorStr = str(vetor)
+    trocasStr = str(trocas)
+
+    saida.write("Merge Sort: ")
+    saida.write(vetorStr)
+    saida.write(", ")
+    saida.write(trocasStr)
+    saida.write("\n")
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------
+
+#QUICK SORT REVERSE 
+def ParticionaREV(vetor, Inicio, Fim): 
+    global trocas
+
+    #escolher o número mais a direita como pivo
+    pivo = vetor[Fim]
+
+    #ponteiro para maioor elemento 
+    i = Inicio-1
+
+    #Passar por todos os elementos
+    #comparar cada elemento com o pivo
+    for j in range (Inicio, Fim):
+        if vetor[j] > pivo:
+            #se um elemento menor que o pivo for encontrado
+            #trocar com o maior elemento apontado popor i
+            i = i + 1
+
+            #trocando o elemento em i com o elemento em j
+            (vetor[i], vetor[j]) = (vetor[j], vetor[i])
+            trocas += 1
+
+    #Trocar o pivo com o maior elemento especificado por i
+    (vetor[i+1], vetor[Fim]) = (vetor[Fim], vetor[i+1])
+    trocas += 1
+
+    #Retornar a posiçao em que a partiçao foi feita
+    return i+1
+
+#Função Principal
+def quickSortREV(vetor, Inicio, Fim):
+    if Inicio < Fim:
+
+        #Achar o pivo, fazendo com que os elementos menores que o pivo fiquem
+        #ao lado esquerdo, e os maiores ao lado direito do pivo
+        pivo = ParticionaREV(vetor, Inicio, Fim)
+
+        #Chamada recursiva para a esquerda do pivo
+        quickSortREV(vetor, Inicio, pivo-1)
+
+        #Chamada recursiva para a direita do pivo
+        quickSortREV(vetor, pivo+1, Fim)
+
+def imprimeVetorQuickREV():
+    tamVetor = len(vetor)
+
+    quickSortREV(vetor, 0, tamVetor-1)
+
+    vetorStr = str(vetor)
+    trocasStr = str(trocas)
+
+    saida.write("Quick Sort: ")
+    saida.write(vetorStr)
+    saida.write(", ")
+    saida.write(trocasStr)
+    saida.write("\n")
+
+#-----------------------------------------------------------------------------------------------------------------------------------------
+
+#HEAP SORT REVERSE
+def heapifyREV(vetor, tamVetor, i):
+    global trocas
+      
+      #Acha o maior entre as raizes e filhos
+    menor = i
+    L = 2 * i + 1
+    R = 2 * i + 2
+  
+    if R < tamVetor and vetor[L] < vetor[menor]:
+        menor = L
+  
+    if R < tamVetor and vetor[R] < vetor[menor]:
+        menor = R
+  
+    #Se a raiz não for maior, troca com o maior e continua a função
+    if menor != i:
+        vetor[i], vetor[menor] = vetor[menor], vetor[i]
+        trocas += 1
+        heapifyREV(vetor, tamVetor, menor)
+  
+  
+def heapSortREV(vetor, tamVetor):
+    global trocas
+    tamVetor = len(vetor)
+  
+    #Constroi a heap maxima
+    for i in range(int(tamVetor/2) - 1, -1, -1):
+        heapifyREV(vetor, tamVetor, i)
+  
+    for i in range(tamVetor-1, -1, -1):
+        #Troca
+        vetor[0], vetor[i] = vetor[i], vetor[0]
+        trocas += 1
+  
+          #Heapify o elemento da raiz
+        heapifyREV(vetor, i, 0)
+
+    vetorStr = str(vetor)
+    trocasStr = str(trocas)
+
+    saida.write("Heap Sort: ")
+    saida.write(vetorStr)
+    saida.write(", ")
+    saida.write(trocasStr)
+    saida.write("\n")
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -543,6 +571,10 @@ def main(argv):
 
    print ('Input file is "', inputfile)
    print ('Output file is "', outputfile)
+
+#-----------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 #MAIN-------------------------------------------------------------------------------------------------------------------------------------
 
@@ -575,7 +607,7 @@ if tamanho > 1 :
     selectionSort(vetor, tamanho)
     bubbleSort(vetor, tamanho)
     imprimeVetorMerge()
-    imprimeVetorQS()
+    imprimeVetorQuick()
     heapSort(vetor)
 
 
