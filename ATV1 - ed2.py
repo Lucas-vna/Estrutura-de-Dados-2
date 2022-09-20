@@ -4,15 +4,18 @@ from random import randint
 import random
 import sys
 import getopt
+import time
 
 trocas = 0
- 
+dif = 0
+
 #FUNÇÕES NORMAIS--------------------------------------------------------------------------------------------------------------------------
 
 
 #INSERTION SORT
 def insertionSort(vetor, tamVetor):
     global trocas
+    global dif
 
     #para i entre 1 e len(meuVetor):
     for i in range(1, len(vetor)):
@@ -34,7 +37,7 @@ def insertionSort(vetor, tamVetor):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -66,7 +69,7 @@ def selectionSort(vetor, tamVetor):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -98,7 +101,7 @@ def bubbleSort(vetor, tamVetor):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -161,7 +164,7 @@ def imprimeVetorMerge():
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -222,7 +225,7 @@ def imprimeVetorQuick():
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -272,7 +275,7 @@ def heapSort(vetor):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -308,7 +311,7 @@ def insertionSortREV(meuVetor, tamVetor):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -340,7 +343,7 @@ def selectionSortREV(meuVetor, tamanhoVetor):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -372,7 +375,7 @@ def bubbleSortREV(meuVetor, N):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -435,7 +438,7 @@ def imprimeVetorMergeREV():
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
@@ -495,7 +498,7 @@ def imprimeVetorQuickREV():
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -544,7 +547,7 @@ def heapSortREV(vetor, tamVetor):
     saida.write(vetorStr)
     saida.write(", ")
     saida.write(trocasStr)
-    saida.write("\n")
+    saida.write("comp, ")
 
 #-----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -596,31 +599,140 @@ letra = (entrada.readline()).replace('\n', '') #Letra é a identificação do m�
 vetor = []
 tamanho = int(tamVetor)
 
+inicio = 0
+fim = 0
+dif = 0
+
 if letra == 'c' and tamanho > 1 :
 
     for i in range (tamanho):
         vetor.append(random.randint(1,tamanho))
-    print("Vetor Desordenado: ", vetor)
 
-    insertionSort(vetor, tamanho)
+    #chamando a funcao com timer -> insertion
+    inicio = time.time()
+    insertionSort(vetor, tamVetor)
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> selection
+    inicio = time.time()
     selectionSort(vetor, tamanho)
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> bubble
+    inicio = time.time()
     bubbleSort(vetor, tamanho)
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> merge
+    inicio = time.time()
     imprimeVetorMerge()
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> quick
+    inicio = time.time()
     imprimeVetorQuick()
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> heap
+    inicio = time.time()
     heapSort(vetor)
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
 
 if letra == 'd' and tamanho > 1:
 
     for i in range (tamanho):
         vetor.append(random.randint(1,tamanho))
-    print("Vetor Desordenado: ", vetor)
 
+    #chamando a funcao com timer -> insertion
+    inicio = time.time()
     insertionSortREV(vetor, tamanho)
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> selection
+    inicio = time.time()
     selectionSortREV(vetor, tamanho)
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> bubble
+    inicio = time.time()
     bubbleSortREV(vetor, tamanho)
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> merge
+    inicio = time.time()
     imprimeVetorMergeREV()
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> quick
+    inicio = time.time()
     imprimeVetorQuickREV()
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
+
+    #chamando a funcao com timer -> heap
+    inicio = time.time()
     heapSortREV(vetor, tamanho)
+    time.sleep(10)
+    fim = time.time()
+    dif = (fim - inicio) * 1000
+    saida.write("{:.2f}".format(dif))
+    saida.write(" ms")
+    saida.write("\n")
 
 if letra == 'r':
 
@@ -628,25 +740,130 @@ if letra == 'r':
 
     for i in range (tamanho):
         vetor.append(random.randint(0,tamanho))
-    print("Vetor Desordenado: ", vetor)
 
     randomico = randint(0,11)
 
     if randomico % 2 == 0:
-        insertionSort(vetor, tamanho)
+        #chamando a funcao com timer -> insertion
+        inicio = time.time()
+        insertionSort(vetor, tamVetor)
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> selection
+        inicio = time.time()
         selectionSort(vetor, tamanho)
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> bubble
+        inicio = time.time()
         bubbleSort(vetor, tamanho)
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> merge
+        inicio = time.time()
         imprimeVetorMerge()
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> quick
+        inicio = time.time()
         imprimeVetorQuick()
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> heap
+        inicio = time.time()
         heapSort(vetor)
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
 
     else:
+        #chamando a funcao com timer -> insertion
+        inicio = time.time()
         insertionSortREV(vetor, tamanho)
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> selection
+        inicio = time.time()
         selectionSortREV(vetor, tamanho)
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> bubble
+        inicio = time.time()
         bubbleSortREV(vetor, tamanho)
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> merge
+        inicio = time.time()
         imprimeVetorMergeREV()
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> quick
+        inicio = time.time()
         imprimeVetorQuickREV()
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
+
+        #chamando a funcao com timer -> heap
+        inicio = time.time()
         heapSortREV(vetor, tamanho)
+        time.sleep(10)
+        fim = time.time()
+        dif = (fim - inicio) * 1000
+        saida.write("{:.2f}".format(dif))
+        saida.write(" ms")
+        saida.write("\n")
 
 entrada.close()
 saida.close()
