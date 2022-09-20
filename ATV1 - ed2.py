@@ -586,6 +586,11 @@ main(sys.argv[3:])
 print(f"Arguments count: {len(sys.argv)}")
 for i, arg in enumerate(sys.argv):
     print(f"Argument {i:>6}: {arg}")
+    
+#if len(sys.argv) == 3:
+    #with open(sys.argv[1], "r") as entrada:
+        #tamVetor = (entrada.readline()).replace('\n', '') #N = número de posições do vetor
+        #letra = (entrada.readline()).replace('\n', '') #Letra é a identificação do método
 
 #abrindo o arquivo e lendo o número  para o tamanho do vetor
 entrada = open("C:/Users/miste/Desktop/Faculdade/Estrutura de Dados/teste/input1.txt", "r")
@@ -611,7 +616,6 @@ if letra == 'c' and tamanho > 1 :
     #chamando a funcao com timer -> insertion
     inicio = time.time()
     insertionSort(vetor, tamVetor)
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -621,7 +625,6 @@ if letra == 'c' and tamanho > 1 :
     #chamando a funcao com timer -> selection
     inicio = time.time()
     selectionSort(vetor, tamanho)
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -631,7 +634,6 @@ if letra == 'c' and tamanho > 1 :
     #chamando a funcao com timer -> bubble
     inicio = time.time()
     bubbleSort(vetor, tamanho)
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -641,7 +643,6 @@ if letra == 'c' and tamanho > 1 :
     #chamando a funcao com timer -> merge
     inicio = time.time()
     imprimeVetorMerge()
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -651,7 +652,6 @@ if letra == 'c' and tamanho > 1 :
     #chamando a funcao com timer -> quick
     inicio = time.time()
     imprimeVetorQuick()
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -661,7 +661,6 @@ if letra == 'c' and tamanho > 1 :
     #chamando a funcao com timer -> heap
     inicio = time.time()
     heapSort(vetor)
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -677,7 +676,6 @@ if letra == 'd' and tamanho > 1:
     #chamando a funcao com timer -> insertion
     inicio = time.time()
     insertionSortREV(vetor, tamanho)
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -687,7 +685,6 @@ if letra == 'd' and tamanho > 1:
     #chamando a funcao com timer -> selection
     inicio = time.time()
     selectionSortREV(vetor, tamanho)
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -697,7 +694,6 @@ if letra == 'd' and tamanho > 1:
     #chamando a funcao com timer -> bubble
     inicio = time.time()
     bubbleSortREV(vetor, tamanho)
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -707,7 +703,6 @@ if letra == 'd' and tamanho > 1:
     #chamando a funcao com timer -> merge
     inicio = time.time()
     imprimeVetorMergeREV()
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -717,7 +712,6 @@ if letra == 'd' and tamanho > 1:
     #chamando a funcao com timer -> quick
     inicio = time.time()
     imprimeVetorQuickREV()
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -727,7 +721,6 @@ if letra == 'd' and tamanho > 1:
     #chamando a funcao com timer -> heap
     inicio = time.time()
     heapSortREV(vetor, tamanho)
-    time.sleep(10)
     fim = time.time()
     dif = (fim - inicio) * 1000
     saida.write("{:.2f}".format(dif))
@@ -747,7 +740,6 @@ if letra == 'r':
         #chamando a funcao com timer -> insertion
         inicio = time.time()
         insertionSort(vetor, tamVetor)
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -757,7 +749,6 @@ if letra == 'r':
         #chamando a funcao com timer -> selection
         inicio = time.time()
         selectionSort(vetor, tamanho)
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -767,7 +758,6 @@ if letra == 'r':
         #chamando a funcao com timer -> bubble
         inicio = time.time()
         bubbleSort(vetor, tamanho)
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -777,7 +767,6 @@ if letra == 'r':
         #chamando a funcao com timer -> merge
         inicio = time.time()
         imprimeVetorMerge()
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -787,7 +776,6 @@ if letra == 'r':
         #chamando a funcao com timer -> quick
         inicio = time.time()
         imprimeVetorQuick()
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -797,7 +785,6 @@ if letra == 'r':
         #chamando a funcao com timer -> heap
         inicio = time.time()
         heapSort(vetor)
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -808,7 +795,6 @@ if letra == 'r':
         #chamando a funcao com timer -> insertion
         inicio = time.time()
         insertionSortREV(vetor, tamanho)
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -818,7 +804,6 @@ if letra == 'r':
         #chamando a funcao com timer -> selection
         inicio = time.time()
         selectionSortREV(vetor, tamanho)
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -828,7 +813,6 @@ if letra == 'r':
         #chamando a funcao com timer -> bubble
         inicio = time.time()
         bubbleSortREV(vetor, tamanho)
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -838,7 +822,6 @@ if letra == 'r':
         #chamando a funcao com timer -> merge
         inicio = time.time()
         imprimeVetorMergeREV()
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -848,7 +831,6 @@ if letra == 'r':
         #chamando a funcao com timer -> quick
         inicio = time.time()
         imprimeVetorQuickREV()
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
@@ -858,7 +840,6 @@ if letra == 'r':
         #chamando a funcao com timer -> heap
         inicio = time.time()
         heapSortREV(vetor, tamanho)
-        time.sleep(10)
         fim = time.time()
         dif = (fim - inicio) * 1000
         saida.write("{:.2f}".format(dif))
