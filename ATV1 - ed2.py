@@ -1,7 +1,9 @@
 #ATV1 - ed2
 from getopt import getopt
+from random import randint
 import random
 import sys
+import getopt
 
 trocas = 0
  
@@ -503,14 +505,14 @@ def heapifyREV(vetor, tamVetor, i):
       
       #Acha o maior entre as raizes e filhos
     menor = i
-    L = 2 * i + 1
-    R = 2 * i + 2
+    l = 2 * i + 1
+    r = 2 * i + 2
   
-    if R < tamVetor and vetor[L] < vetor[menor]:
-        menor = L
+    if l < tamVetor and vetor[l] < vetor[menor]:
+        menor = l
   
-    if R < tamVetor and vetor[R] < vetor[menor]:
-        menor = R
+    if r < tamVetor and vetor[r] < vetor[menor]:
+        menor = r
   
     #Se a raiz não for maior, troca com o maior e continua a função
     if menor != i:
@@ -524,7 +526,7 @@ def heapSortREV(vetor, tamVetor):
     tamVetor = len(vetor)
   
     #Constroi a heap maxima
-    for i in range(int(tamVetor/2) - 1, -1, -1):
+    for i in range(int(tamVetor//2) - 1, -1, -1):
         heapifyREV(vetor, tamVetor, i)
   
     for i in range(tamVetor-1, -1, -1):
@@ -572,13 +574,11 @@ def main(argv):
    print ('Input file is "', inputfile)
    print ('Output file is "', outputfile)
 
-#-----------------------------------------------------------------------------------------------------------------------------------------
-
 
 
 #MAIN-------------------------------------------------------------------------------------------------------------------------------------
 
-main(sys.argv[1:])
+main(sys.argv[3:])
 
 print(f"Arguments count: {len(sys.argv)}")
 for i, arg in enumerate(sys.argv):
@@ -595,9 +595,8 @@ letra = (entrada.readline()).replace('\n', '') #Letra é a identificação do m�
 
 vetor = []
 tamanho = int(tamVetor)
-metodo = str(letra)
 
-if tamanho > 1 :
+if letra == 'c' and tamanho > 1 :
 
     for i in range (tamanho):
         vetor.append(random.randint(1,tamanho))
@@ -610,6 +609,44 @@ if tamanho > 1 :
     imprimeVetorQuick()
     heapSort(vetor)
 
+if letra == 'd' and tamanho > 1:
+
+    for i in range (tamanho):
+        vetor.append(random.randint(1,tamanho))
+    print("Vetor Desordenado: ", vetor)
+
+    insertionSortREV(vetor, tamanho)
+    selectionSortREV(vetor, tamanho)
+    bubbleSortREV(vetor, tamanho)
+    imprimeVetorMergeREV()
+    imprimeVetorQuickREV()
+    heapSortREV(vetor, tamanho)
+
+if letra == 'r':
+
+    tamanho = 32000
+
+    for i in range (tamanho):
+        vetor.append(random.randint(0,tamanho))
+    print("Vetor Desordenado: ", vetor)
+
+    randomico = randint(0,11)
+
+    if randomico % 2 == 0:
+        insertionSort(vetor, tamanho)
+        selectionSort(vetor, tamanho)
+        bubbleSort(vetor, tamanho)
+        imprimeVetorMerge()
+        imprimeVetorQuick()
+        heapSort(vetor)
+
+    else:
+        insertionSortREV(vetor, tamanho)
+        selectionSortREV(vetor, tamanho)
+        bubbleSortREV(vetor, tamanho)
+        imprimeVetorMergeREV()
+        imprimeVetorQuickREV()
+        heapSortREV(vetor, tamanho)
 
 entrada.close()
 saida.close()
